@@ -1,0 +1,47 @@
+# Color Support
+attrcolor b ".I"
+defbce "on"
+
+markkeys "h=^B:l=^F:$=^E"
+
+hardstatus on
+#termcapinfo xterm*|rxvt*|kterm*|Eterm* ti:\E7\E[?47l;hs:ts=\E]0;:fs=\007:ds=\E]0;\007
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'ti:\E7\E[?47l;hs:ts=\E]0;:fs=\007:ds=\E]0;\007:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#termcapinfo xterm*|rxvt*|kterm*|Eterm*|screen* 'ti:\E7\E[?47l;hs:ts=\E]0;:fs=\007:ds=\E]0;\007:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+hardstatus alwayslastline
+
+#shelltitle "% |bash"
+shelltitle "% |(idle)"
+
+defscrollback 10000
+startup_message off
+autodetach on
+autonuke on
+msgwait 1
+
+#backtick 10 1 60 "whoami"
+#caption string '%?%F%{.R.}%?%3n %t%? [%h]%?'
+#hardstatus string '%{= kd}[%{B}%10`%{W}@%{R}%H%{d}:%{y}%n %{g}%t%{d}][%-w%{c}%n %t%{-}%+w%=][%{g}%d.%m.%y %{m}%c%{d}]'
+#hardstatus string "%{= kd}[%{B}$USER%{W}@%{R}%H%{d}][%{+b y}%n %{g}%t%{w}][%L=%-w%L>%{c}%n %t%{-}%+w%-17=][%{g}%d.%m.%y %{m}%c%{d}]"
+
+caption string '%{= kd}[%=%?%F%{.c}[%:%{dd}%? %n %t %h%? {%h}%?%?%F%{.c}]%:%{dd}%?%{= kd}%=]'
+backtick 0 30 30 sh -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"'
+hardstatus string "%{= d}[%{B}$USERNAME%{W}@%{R}%H%{d}][%{b y}%n:%{g}%`%{d}][%{W}%L=%-w%L>%{+u c}%n %t%{-}%+w%-17=%{d}][%{g}%d.%m.%y %{m}%c%{d}]"
+hardstatus on
+
+#defshell -$SHELL
+
+escape ^Xx
+
+bind 'b' select
+bind ^b  windowlist -b
+bind 'f' screen
+bind ^f  screen
+bind ^w  title
+bind ^c  detach
+
+screen -t local 0
+
+# Local Variables:
+# eval: (conf-mode)
+# End:
