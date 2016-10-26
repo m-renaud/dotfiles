@@ -6,8 +6,6 @@ set $mod Mod4
 set $alt Mod1
 set $ralt 108
 set $ctrl Control
-set $default_monitor LVDS1
-set $aux_monitor VGA1
 
 
 ### -------------------------------------------------- ###
